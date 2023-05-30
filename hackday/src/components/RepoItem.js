@@ -1,32 +1,40 @@
+import { useState } from 'react'
 import '../App.css'
+import { Octokit } from '@octokit/core'
+import CommitList from './CommitList';
 
-
-function RepoItem( { repoItem}){
-
-    function handleRepoClick() {
+function RepoItem( { repoItem }){
+    const [commits, setCommitList] = useState([]);
+    
+    async function handleRepoClick() { 
 
         console.log(repoItem)
-        try { 
-            let commit_url = repoItem["commits_url"]
-            console.log(commit_url)
-            commit_url = commit_url.substring(0, commit_url.length - 6)
 
-            let result = fetch(commit_url)
-            .then(res => {
-                return res.json()
+        try {
+            const octokit = new Octokit({
+              auth: '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'
             })
       
-            console.log(result)  
+            let response = await octokit.request('GET /repos/{owner}/{repo}/commits', {
+                owner: repoItem['owner']['login'],
+                repo:  repoItem.name,
+                headers: {
+                  'X-GitHub-Api-Version': '2022-11-28'
+                }
+              })
+
+              setCommitList(response['data'])
+
+              console.log(response)
+          } catch (error){
+            console.log("Something went wrong...")
+          }
         }
-        catch (error) {
-          console.log("Something Went Wrong")
-        }
-    }
 
 
     return (
         <>
-            <tr>
+            <tr onClick={handleRepoClick}>
                 <th scope="row">{repoItem.name}</th>
                 <td>{repoItem.language}</td>
                 <td>{repoItem.description}</td>
@@ -34,6 +42,8 @@ function RepoItem( { repoItem}){
                 <td>{repoItem.forks}</td>
                 <td>{repoItem.created_at}</td>               
             </tr>
+
+            {commits.length !== 0 && <CommitList key={0} commits={commits}/>}
 
         </>
     ) 

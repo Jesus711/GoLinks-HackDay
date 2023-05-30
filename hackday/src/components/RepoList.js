@@ -14,7 +14,7 @@ function RepoList({ search , repos }) {
             return -1;
         }
 
-        if (a.stargazers_count > b.stargazers_count){
+        if (a.stargazers_count < b.stargazers_count){
             return 1;
         }
 
