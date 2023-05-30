@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css'
+import './App.css';
 import Repolist from './components/RepoList';
 import { Octokit } from "@octokit/core";
 
@@ -12,7 +12,7 @@ function App() {
 
       try {
         const octokit = new Octokit({
-          auth: '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'
+          auth: 'token'
         })
   
         const response = await octokit.request(`GET /orgs/${search}/repos`, {

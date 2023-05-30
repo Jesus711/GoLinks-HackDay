@@ -1,12 +1,8 @@
-import { useState } from 'react';
 import RepoItem from './RepoItem.js'
 import '../App.css'
 
 
 function RepoList({ search , repos }) {
-
-    const [commitList, setCommitList] = useState([])
-    const [clicked, setClicked] = useState(false)
 
     let sorted_repos = [...repos];
     sorted_repos.sort((a, b) => {

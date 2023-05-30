@@ -1,5 +1,5 @@
 import CommitItem from "./CommitItem";
-
+import '../App.css';
 
 
 function CommitList( { commits }){

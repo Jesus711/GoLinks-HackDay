@@ -7,9 +7,6 @@ function RepoItem( { repoItem }){
     const [commits, setCommitList] = useState([]);
     
     async function handleRepoClick() { 
-
-        console.log(repoItem)
-
         try {
             const octokit = new Octokit({
               auth: 'token'
@@ -40,9 +37,8 @@ function RepoItem( { repoItem }){
                 <td>{repoItem.description}</td>
                 <td>{repoItem.stargazers_count}</td>
                 <td>{repoItem.forks}</td>
-                <td>{repoItem.created_at}</td>               
+                <td>{repoItem.created_at}</td>       
             </tr>
-
             {commits.length !== 0 && <CommitList key={0} commits={commits}/>}
 
         </>

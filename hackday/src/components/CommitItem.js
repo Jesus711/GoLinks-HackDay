@@ -1,3 +1,4 @@
+import '../App.css';
 function CommitItem( {commitItem }){
 
     return (
