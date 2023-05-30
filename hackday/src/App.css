@@ -1,0 +1,54 @@
+/* * {
+    border: 1px solid black;
+} */
+html{
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    font-size: 20px;
+    padding: 1vw 10vw;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: turquoise;
+}
+
+.app-title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.background {
+    background: red;
+}
+
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+#githubOrgSearch {
+    width: 100%;
+}
+
+#search-button {
+    margin: auto;
+    width: 50%;
+}
+
+.repo-item {
+    display: inline;
+    font-weight: bold;
+}
+
+.table-display {
+    height: 800px;
+    overflow: auto;
+}
