@@ -12,7 +12,7 @@ function RepoItem( { repoItem }){
 
         try {
             const octokit = new Octokit({
-              auth: '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'
+              auth: 'token'
             })
       
             let response = await octokit.request('GET /repos/{owner}/{repo}/commits', {
